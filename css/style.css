@@ -1,0 +1,18 @@
+
+#details_page {
+	margin: .5em;
+}
+
+#app_content p {
+	margin: .5em;
+	white-space:normal;
+}
+
+.ui-body-d {
+	background-color: #f1f1f1;
+	background-image: none;
+}
+
+.ui-li-aside {
+	
+}

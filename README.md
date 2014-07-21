@@ -1,4 +1,4 @@
 tizenreader
 ===========
 
-An simple RSS reader for Tizen Smartphones
+A simple RSS reader for Tizen Smartphones.

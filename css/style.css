@@ -1,6 +1,7 @@
 
 #details_page {
-	margin: .5em;
+	margin: 1.5em;
+	width: 90%;
 }
 
 #app_content p {
@@ -8,11 +9,18 @@
 	white-space:normal;
 }
 
-.ui-body-d {
-	background-color: #f1f1f1;
-	background-image: none;
+#add_feed_button {
+	
 }
 
-.ui-li-aside {
-	
+#add_feed_form {
+	width: 245px;	
+}
+
+.search_feed_text {
+	margin-bottom: 100px;
+}
+
+.ui-body-c {
+	background-image: none;
 }

@@ -18,26 +18,46 @@
 	</head>
 	
 	<body>
-	    <div id="app_page" data-role="page" data-theme="d">
+	    <div id="app_page" data-role="page">
 	    
-	    	<!-- menu -->
-	    	<div id="menu_panel" data-role="panel" data-theme="d" data-display="overlay" data-position="left">
-		        <ul data-role="listview" data-count-theme="d" data-inset="false">
+	    	<!-- menu panel -->
+	    	<div id="menu_panel" data-role="panel" data-display="overlay" data-position="left">
+		        <ul data-role="listview" data-inset="false">
+				    <li><a href="#">All<span class="ui-li-count">58</span></a></li>
+				    <li><a href="#">Gizmodo<span class="ui-li-count">20</span></a></li>
+				    <li><a href="#">Lifehacker <span class="ui-li-count">38</span></a></li>
 				    <li><a href="#">All<span class="ui-li-count">58</span></a></li>
 				    <li><a href="#">Gizmodo<span class="ui-li-count">20</span></a></li>
 				    <li><a href="#">Lifehacker <span class="ui-li-count">38</span></a></li>
 				</ul>
 		    </div>
+		    
+		    <!-- add feed panel -->
+	    	<div id="add_feed_button" data-role="panel" data-display="overlay" data-position="right">
+	   			<input id="search_feed_text" name="Search" type="search" value="" placeholder="Search" />
+	   			
+	   			<ul data-role="listview" data-inset="false">
+				    <li><a href="#">Gizmodo Live - Google I/O 2014 Liveblog</a></li>
+				    <li><a href="#">Sploid - Headlines from the future - Gizmodo</a></li>
+				    <li><a href="#">Amusement park throws people from 100-foot ... - Sploid - Gizmodo</a></li>
+				    <li><a href="#">Gizmodo on Vimeo</a></li>
+				    <li><a href="#">Alissa Walker</a></li>
+				    <li><a href="#">Stories from Gizmodo - Digg</a></li>
+				    <li><a href="#">Gizmodo (gizmodo) on App.net</a></li>
+				    <li><a href="#">Social Plugins Case Study – Gizmodo | Gigya</a></li>
+				    <li><a href="#">Gizmodo the Movie</a></li>
+				</ul>
+		    </div>
 	    
 	    	<!-- header -->
-	        <div id="app_header" data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="b">
+	        <div id="app_header" data-role="header" data-position="fixed" data-tap-toggle="false">
 	            <h1>Tizen Reader</h1>
-	            <a id="menu_button" data-role="button" data-icon="bars" href="#menu_panel" data-iconpos="notext"
-	               class="ui-btn-left" data-iconshadow="false" data-inline="true" data-theme="b"></a>
+	            <a id="menu_button" data-role="button" data-icon="bars" href="#menu_panel" data-iconpos="notext" class="ui-btn-left" data-iconshadow="false" data-inline="true"></a>
+	            <a id="add_feed_button" data-role="button" data-icon="plus" href="#add_feed_button" data-iconpos="notext" class="ui-btn-right" data-iconshadow="false" data-inline="true"></a>
 	        </div>
 	        
 			<!-- content -->
-	        <div id="app_content" data-role="content" data-theme="d">
+	        <div id="app_content" data-role="content">
 	            <ul data-role="listview" data-inset="false">
 				    <li>
 				    	<a href="details.html" data-transition="slide">

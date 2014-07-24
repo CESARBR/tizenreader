@@ -6,18 +6,23 @@
 
 #app_content p {
 	margin: .5em;
-	white-space:normal;
+	white-space: normal;
 }
 
-#add_feed_button {
-	
+#feed_search_result {
+	margin-top: 22px; 
 }
 
 #add_feed_form {
 	width: 245px;	
 }
 
+.feed_list_item {
+	font-size: 12px;	
+}
+
 .search_feed_text {
+	font-size: 12px;	
 	margin-bottom: 100px;
 }
 

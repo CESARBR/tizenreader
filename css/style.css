@@ -17,6 +17,14 @@
 	width: 245px;	
 }
 
+#next_button {
+	margin-right: 40px;
+}
+
+#app_footer {
+	height: 32px;
+}
+
 .feed_list_item {
 	font-size: 12px;	
 }

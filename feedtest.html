@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+	    google.load("feeds", "1");
+	
+	    function onFeedsSearchButtonClick() {
+	    	var searchField = document.getElementById("search_field");
+	    	var query = searchField.value;
+	    	
+  			google.feeds.findFeeds(query, onFeedSearchResult);
+	    }
+	    
+	    function onFeedSearchResult(result) {
+			if (!result.error) {
+				var content = document.getElementById('feed_result_list');
+				var html = '';
+				
+				for (var i = 0; i < result.entries.length; i++) {
+					var entry = result.entries[i];
+					html += '<p><a href="' + entry.url + '">' + entry.title + '</a></p>';
+				}
+				content.innerHTML = html;
+			}
+		}
+	    google.setOnLoadCallback(onFeedsSearchButtonClick);
+    </script>
+  </head>
+  <body>
+  	<input id="search_field" type="text" />
+  	<input id="search_button" type="button" value="Search" onclick="onFeedsSearchButtonClick()" /> 
+  
+    <div id="feed_result_list"></div>
+  </body>
+</html>

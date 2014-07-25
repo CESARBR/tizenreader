@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://www.cesar.org.br/TizenReader" version="1.0.0" viewmodes="maximized">
-    <tizen:application id="v9ExjV6BqM.SimpleRSS" package="v9ExjV6BqM" required_version="2.2"/>
+    <tizen:application id="v9ExjV6BqM.TizenReader" package="v9ExjV6BqM" required_version="2.2"/>
     <author email="hmcf@cesar.org.br">CESAR</author>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png"/>
-    <name>TizenReader</name>
+    <name>Tizen Reader</name>
 </widget>

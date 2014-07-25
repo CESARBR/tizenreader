@@ -17,13 +17,38 @@
 	    <link rel="stylesheet" href="./css/style.css" />
 	    <script type="text/javascript" src="./js/main.js"></script>
 	    <script type="text/javascript">
+	    
+	    	/*function Feed() {
+	    		this.url = "";
+	    		this.title = "";
+	    	}
+	    	Feed.prototype = {};
+	    	
+	    	function FeedsManager() {
+	    		this.feeds = [];
+	    	}    	
+	    	FeedsManager.prototype = {};
+	    	FeedsManager.prototype.add function(item){
+	    		this.feeds.push(item);
+	    	}
+	    	
+	    	FeedsManager.prototype.remove function(item){
+	    		this.feeds.pop(item);
+	    	}*/
+	    	
+		    function addNewFeed(value) {
+		    	var html = '<li data-icon="minus" onclick="' + value.url + '" ><a class="ui-link-inherit feed_list_item">'+$(value).text()+'</a></li>';
+				$(value).replaceWith(html);
+				$("#feed_search_result").listview('refresh');
+		    }
+		    
 		    google.load("feeds", "1");
 		
 		    function onFeedsSearchButtonClick() {
-		    	var searchField = document.getElementById("search_field");
-		    	var query = searchField.value;
+		    	var query = $("#search_field").val();
 	  			google.feeds.findFeeds(query, onFeedSearchResult);
 		    }
+		    
 		    
 		    function onFeedSearchResult(result) {
 				if (!result.error) {
@@ -31,10 +56,11 @@
 					
 					for (var i = 0; i < result.entries.length; i++) {
 						var entry = result.entries[i];
-						html += '<li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="' + entry.url + '">' + entry.title + '</a></li>';
+						this.title = entry.title;
+						html += '<li data-icon="plus" onclick="addNewFeed(this)" id="' + entry.url + '"><a class="ui-link-inherit feed_list_item">' + entry.title + '</a></li>';
 					}
 					$("#feed_search_result").html(html);
-					$('ul').listview('refresh');
+					$("#feed_search_result").listview('refresh');
 					
 				}
 			}

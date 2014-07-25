@@ -16,6 +16,29 @@
 	    <!-- application -->
 	    <link rel="stylesheet" href="./css/style.css" />
 	    <script type="text/javascript" src="./js/main.js"></script>
+	    <script type="text/javascript">
+		    google.load("feeds", "1");
+		
+		    function onFeedsSearchButtonClick() {
+		    	var searchField = document.getElementById("search_field");
+		    	var query = searchField.value;
+	  			google.feeds.findFeeds(query, onFeedSearchResult);
+		    }
+		    
+		    function onFeedSearchResult(result) {
+				if (!result.error) {
+					var html = '';
+					
+					for (var i = 0; i < result.entries.length; i++) {
+						var entry = result.entries[i];
+						html += '<li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="' + entry.url + '">' + entry.title + '</a></li>';
+					}
+					$("#feed_search_result").html(html);
+					$('ul').listview('refresh');
+					
+				}
+			}
+	    </script>
 	</head>
 	
 	<body>
@@ -32,19 +55,9 @@
 		    
 		    <!-- add feed panel -->
 	    	<div id="add_feed_button" data-role="panel" data-display="overlay" data-position="right">
-   				<input id="search_feed_text" name="Search" type="search" value="" placeholder="Search" />
-   				<a href="#" data-role="button" data-icon="search" data-iconpos="notext" data-inline="true">Search</a>
+   				<input id="search_field" name="Search" type="search" value="" placeholder="Search" onkeypress="onFeedsSearchButtonClick()" />
 	   			
-	   			<ul id="feed_search_result" data-role="listview" data-inset="false">
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Gizmodo Live - Google I/O 2014 Liveblog</a></li>
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Sploid - Headlines from the future - Gizmodo</a></li>
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Amusement park throws people from 100-foot ... - Sploid - Gizmodo</a></li>
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Gizmodo on Vimeo</a></li>
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Alissa Walker</a></li>
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Stories from Gizmodo - Digg</a></li>
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Gizmodo (gizmodo) on App.net</a></li>
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Social Plugins Case Study – Gizmodo | Gigya</a></li>
-				    <li data-icon="plus"><a class="ui-link-inherit feed_list_item" href="#">Gizmodo the Movie</a></li>
+	   			<ul id="feed_search_result" data-role="listview" data-inset="false">				   
 				</ul>
 		    </div>
 	    

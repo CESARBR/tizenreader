@@ -18,7 +18,7 @@
 	    <script type="text/javascript" src="./js/main.js"></script>
 	    <script type="text/javascript">
 	    
-	    	/*function Feed() {
+	    	function Feed() {
 	    		this.url = "";
 	    		this.title = "";
 	    	}
@@ -28,18 +28,30 @@
 	    		this.feeds = [];
 	    	}    	
 	    	FeedsManager.prototype = {};
-	    	FeedsManager.prototype.add function(item){
+	    	FeedsManager.prototype.add = function(item){
+		    	"use strict";	    	
 	    		this.feeds.push(item);
 	    	}
+	    	var feedsManager = new FeedsManager();
 	    	
-	    	FeedsManager.prototype.remove function(item){
+	    	FeedsManager.prototype.remove = function(item){
+		    	"use strict";	    	
 	    		this.feeds.pop(item);
-	    	}*/
+	    	}
 	    	
 		    function addNewFeed(value) {
-		    	var html = '<li data-icon="minus" onclick="' + value.url + '" ><a class="ui-link-inherit feed_list_item">'+$(value).text()+'</a></li>';
+		    	"use strict";		    
+		    	var title = $(value).text();
+		    	var url = value.id;
+		    	
+		    	var html = '<li data-icon="minus" onclick="' + url + '" ><a class="ui-link-inherit feed_list_item">'+title+'</a></li>';
 				$(value).replaceWith(html);
 				$("#feed_search_result").listview('refresh');
+				
+				var feed = new Feed();
+				feed.title = title;
+				feed.url = url;
+				feedsManager.add(feed);
 		    }
 		    
 		    google.load("feeds", "1");

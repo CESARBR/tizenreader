@@ -32,19 +32,20 @@
 		    	"use strict";	    	
 	    		this.feeds.push(item);
 	    	}
-	    	var feedsManager = new FeedsManager();
 	    	
-	    	FeedsManager.prototype.remove = function(item){
+	    	FeedsManager.prototype.remove = function(feed){
 		    	"use strict";	    	
-	    		this.feeds.pop(item);
+	    		this.feeds.pop(feed);
 	    	}
+	    	
+	    	var feedsManager = new FeedsManager();
 	    	
 		    function addNewFeed(value) {
 		    	"use strict";		    
 		    	var title = $(value).text();
 		    	var url = value.id;
 		    	
-		    	var html = '<li data-icon="minus" onclick="' + url + '" ><a class="ui-link-inherit feed_list_item">'+title+'</a></li>';
+		    	var html = '<li data-icon="minus" onclick="removeFeed(this);" id="'+url+'" ><a class="ui-link-inherit feed_list_item">'+title+'</a></li>';
 				$(value).replaceWith(html);
 				$("#feed_search_result").listview('refresh');
 				
@@ -53,6 +54,11 @@
 				feed.url = url;
 				feedsManager.add(feed);
 		    }
+		    
+		    function removeFeed(value) {
+				"use strict";		    
+				feedsManager.remove(value);
+			}
 		    
 		    google.load("feeds", "1");
 		

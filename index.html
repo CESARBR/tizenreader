@@ -17,7 +17,7 @@
 	    <link rel="stylesheet" href="./css/style.css" />
 	    <script type="text/javascript" src="./js/main.js"></script>
 	    <script type="text/javascript">
-	    
+
 	    	function Feed() {
 	    		this.url = "";
 	    		this.title = "";
@@ -53,6 +53,8 @@
 				feed.title = title;
 				feed.url = url;
 				feedsManager.add(feed);
+				//update list of feeds
+				loadFeedsMenu();
 		    }
 		    
 		    function removeFeed(value) {
@@ -65,6 +67,18 @@
 				$("#feed_search_result").listview('refresh');
 				
 				feedsManager.remove(value);
+			}
+
+			//load the saved feeds
+			function loadFeedsMenu(){
+				var feeds = feedsManager.feeds;
+				var html = '';
+				for (var i = 0; i < feeds.length; i++) {
+					var feed = feeds[i];
+					html += '<li><a class="ui-link-inherit feed_list_item" href="'+feed.url+'">'+feed.title+'<span class="ui-li-count">58</span></a></li>';
+				}
+				$("#list_of_added_feeds").html(html);
+				$("#list_of_added_feeds").listview('refresh');
 			}
 		    
 		    google.load("feeds", "1");
@@ -97,10 +111,10 @@
 	    
 	    	<!-- menu panel -->
 	    	<div id="menu_panel" data-role="panel" data-display="overlay" data-position="left">
-		        <ul data-role="listview" data-inset="false">
-				    <li><a class="ui-link-inherit feed_list_item" href="#">All<span class="ui-li-count">58</span></a></li>
+		        <ul id="list_of_added_feeds" data-role="listview" data-inset="false">
+				   <li><a class="ui-link-inherit feed_list_item" href="#">All<span class="ui-li-count">58</span></a></li>
 				    <li><a class="ui-link-inherit feed_list_item" href="#">Gizmodo<span class="ui-li-count">20</span></a></li>
-				    <li><a class="ui-link-inherit feed_list_item" href="#">Lifehacker <span class="ui-li-count">38</span></a></li>
+				    <li><a class="ui-link-inherit feed_list_item" href="#">Lifehacker <span class="ui-li-count">38</span></a></li> 
 				</ul>
 		    </div>
 		    

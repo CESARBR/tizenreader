@@ -57,6 +57,13 @@
 		    
 		    function removeFeed(value) {
 				"use strict";		    
+				var title = $(value).text();
+		    	var url = value.id;
+		    	
+		    	var html = '<li data-icon="plus" onclick="addNewFeed(this);" id="'+url+'" ><a class="ui-link-inherit feed_list_item">'+title+'</a></li>';
+				$(value).replaceWith(html);
+				$("#feed_search_result").listview('refresh');
+				
 				feedsManager.remove(value);
 			}
 		    

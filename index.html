@@ -60,8 +60,7 @@
 		    function removeFeed(value) {
 				"use strict";		    
 				var title = $(value).text();
-		    	var url = value.id;
-		    	
+		    	var url = value.id;		    	
 		    	var html = '<li data-icon="plus" onclick="addNewFeed(this);" id="'+url+'" ><a class="ui-link-inherit feed_list_item">'+title+'</a></li>';
 				$(value).replaceWith(html);
 				$("#feed_search_result").listview('refresh');
@@ -76,7 +75,8 @@
 				var html = '';
 				for (var i = 0; i < feeds.length; i++) {
 					var feed = feeds[i];
-					html += '<li><a class="ui-link-inherit feed_list_item" href="'+feed.url+'">'+feed.title+'<span class="ui-li-count">58</span></a></li>';
+					var count = getUnreadFeeds(feed.url, i);
+					html += '<li><a class="ui-link-inherit feed_list_item" href="'+feed.url+'">'+feed.title+'<span class="ui-li-count"><span id="'+i+'"0</span></span></a></li>';
 				}
 				$("#list_of_added_feeds").html(html);
 				$("#list_of_added_feeds").listview('refresh');
@@ -104,6 +104,35 @@
 					
 				}
 			}
+			
+			function findFeedsFromUrl(url){				
+				var feed = new google.feeds.Feed(url);
+				feed.load(function(result){
+					if(!result.error){
+						var container = $("#app_content");
+						var html = '';
+						for(var i = 0; i < result.feed.entries.length; i++){
+							var entry = result.feed.entries[i];
+							html += entry.title;
+							html +=entry.content;							
+						}
+						$(container).replaceWith(html);
+					} else {
+						alert(result.error.message);
+					}
+				});
+			}
+			
+			function getUnreadFeeds(url, index){				
+				var feed = new google.feeds.Feed(url);
+				feed.load(function(result){
+					if(!result.error){
+						$("#"+index).html('<span id="'+index+'" >'+result.feed.entries.length+'</span>');
+						$("#feed_search_result").listview('refresh');
+					}
+				});
+			}
+			
 	    </script>
 	</head>
 	

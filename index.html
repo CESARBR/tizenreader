@@ -75,8 +75,9 @@
 				var html = '';
 				for (var i = 0; i < feeds.length; i++) {
 					var feed = feeds[i];
-					var count = getUnreadFeeds(feed.url, i);
-					html += '<li><a class="ui-link-inherit feed_list_item" href="'+feed.url+'">'+feed.title+'<span class="ui-li-count"><span id="'+i+'"0</span></span></a></li>';
+					getUnreadFeeds(feed.url, i);
+					//"'+feed.url+'"
+					html += '<li  onclick="findFeedsFromUrl(this)" id="'+feed.url+'"><a class="ui-link-inherit feed_list_item">'+feed.title+'<span class="ui-li-count"><span id="'+i+'"</span></span></a></li>';
 				}
 				$("#list_of_added_feeds").html(html);
 				$("#list_of_added_feeds").listview('refresh');
@@ -105,18 +106,25 @@
 				}
 			}
 			
-			function findFeedsFromUrl(url){				
-				var feed = new google.feeds.Feed(url);
+			//
+			function findFeedsFromUrl(value){				
+				var feed = new google.feeds.Feed(value.id);
 				feed.load(function(result){
 					if(!result.error){
-						var container = $("#app_content");
+						var container = $("#list_unred_feeds");
 						var html = '';
 						for(var i = 0; i < result.feed.entries.length; i++){
 							var entry = result.feed.entries[i];
-							html += entry.title;
-							html +=entry.content;							
+							var li = '<li data-icon="false">'+
+										'<a href="#">'+
+											'<p><strong>'+entry.title+'</strong></p>'+
+											'<p>parte do texto do link</p>'+
+										'</a>'+
+									 '</li>';
+							html+=li;		
 						}
-						$(container).replaceWith(html);
+						$("#list_unred_feeds").html(html);
+						$("#list_unred_feeds").listview('refresh');
 					} else {
 						alert(result.error.message);
 					}
@@ -165,9 +173,9 @@
 	        
 			<!-- content -->
 	        <div id="app_content" data-role="content">
-	            <ul data-role="listview" data-inset="false">
-				    <li data-icon="false">
-				    	<a href="details.html" data-transition="slide">
+	            <ul id="list_unred_feeds" data-role="listview" data-inset="false">
+				    <li data-icon="false" onclick="findFeedsFromUrl('http://feeds.feedburner.com/TheAtlantic')" >
+				    	<a data-transition="slide">
 					        <p><strong>Vale a pena comprar um drone? Entenda quais são riscos e benefícios</strong></p>
 					        <p>Os drones vêm tomando conta do espaço brasileiro...</p>
 				    	</a>

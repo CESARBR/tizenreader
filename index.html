@@ -16,8 +16,9 @@
 	    <!-- application -->
 	    <link rel="stylesheet" href="./css/style.css" />
 	    <script type="text/javascript" src="./js/main.js"></script>
+	    <script type="text/javascript" src="./js/feed_mediator.js"></script>
+	    <script type="text/javascript" src="./js/feed_database.js"></script>
 	    <script type="text/javascript">
-
 	    	function Feed() {
 	    		this.url = "";
 	    		this.title = "";
@@ -105,7 +106,7 @@
 					
 				}
 			}
-			
+		    
 			//
 			function findFeedsFromUrl(value){				
 				var feed = new google.feeds.Feed(value.id);
@@ -116,13 +117,14 @@
 						for(var i = 0; i < result.feed.entries.length; i++){
 							var entry = result.feed.entries[i];
 							var content = entry.content;
-							var imgSrc = $(content).children("img")[0].src;
-							if(!imgSrc) {
-								imgSrc = "img/mario_bros.jpg"; //TODO: change to default image
+							var img = $(content).children("img")[0];
+							var imgSrc = "img/mario_bros.jpg"; //TODO: change to default image 
+							if(img) {
+								imgSrc = img.src; 
 							}
 							var li = '<li data-icon="false">'+
 										'<img src="'+imgSrc+'" width="64" height="64" style="display:inline-block"/>'+
-										'<a href="'+entry.link+'" style="display:inline-block">'+
+										'<a href="details.html?id=' + entry.title + '" style="display:inline-block">'+
 											'<p><strong>'+entry.title+'</strong></p>'+
 											'<p>'+entry.contentSnippet+'</p>'+
 										'</a>'+

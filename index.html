@@ -115,10 +115,11 @@
 						var html = '';
 						for(var i = 0; i < result.feed.entries.length; i++){
 							var entry = result.feed.entries[i];
+							var content = entry.content;
 							var li = '<li data-icon="false">'+
-										'<a href="#">'+
+										'<a href="'+entry.link+'">'+
 											'<p><strong>'+entry.title+'</strong></p>'+
-											'<p>parte do texto do link</p>'+
+											'<p>'+entry.contentSnippet+'</p>'+
 										'</a>'+
 									 '</li>';
 							html+=li;		

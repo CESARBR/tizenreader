@@ -10,11 +10,11 @@
 }
 
 #feed_search_result {
-	margin-top: 22px; 
+	margin-top: 22px;
 }
 
 #add_feed_form {
-	width: 245px;	
+	width: 245px;
 }
 
 #next_button {
@@ -25,12 +25,19 @@
 	height: 32px;
 }
 
+.feed_image {
+	margin-left: 12px;
+	margin-top: 18px;
+	height: 80px;
+	width: 80px;
+}
+
 .feed_list_item {
-	font-size: 12px;	
+	font-size: 12px;
 }
 
 .search_feed_text {
-	font-size: 12px;	
+	font-size: 12px;
 	margin-bottom: 100px;
 }
 

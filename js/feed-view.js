@@ -102,11 +102,12 @@ FeedView.prototype.findFeedsFromUrl = function(value) {
         if (img) {
           imgSrc = img.src;
         }
+		var title = entry.title.replace(/["']/g,"");
         var li =
-          '<li data-icon="false" onclick="feedView.showFeedDetails(\''+ entry.title +'\', \''+ value.id +'\')" id="'+ entry.link +'">' +
+          '<li data-icon="false" onclick="feedView.showFeedDetails(\''+ title +'\', \''+ value.id +'\')" id="'+ entry.link +'">' +
           '  <a style="display:inline-block" data-transition="slide">' +
           '    <img class="feed_image" src="' + imgSrc + '"/>' +
-          '    <p><strong>' + entry.title + '</strong></p>' +
+          '    <p><strong>' + title + '</strong></p>' +
           '    <p>' + entry.contentSnippet + '</p>' +
           '  </a>'+
           '</li>';
@@ -135,7 +136,7 @@ FeedView.prototype.loadFeedContent = function(title, linkFeed) {
 				var entry = result.feed.entries[i];
 				if(entry.title == title){
 					$("#details_page").html(entry.content);
-					$("#feed_title").html(entry.content);
+					$("#feed_title").html(entry.title);
 					break;
 				}
 			}

@@ -103,8 +103,8 @@ FeedView.prototype.findFeedsFromUrl = function(value) {
           imgSrc = img.src;
         }
         var li =
-          '<li data-icon="false">' +
-          '  <a href="details.html?id=' + entry.title + '" style="display:inline-block">' +
+          '<li data-icon="false" onclick="feedView.showFeedDetails(\''+ entry.title +'\', \''+ value.id +'\')" id="'+ entry.link +'">' +
+          '  <a style="display:inline-block" data-transition="slide">' +
           '    <img class="feed_image" src="' + imgSrc + '"/>' +
           '    <p><strong>' + entry.title + '</strong></p>' +
           '    <p>' + entry.contentSnippet + '</p>' +
@@ -118,6 +118,29 @@ FeedView.prototype.findFeedsFromUrl = function(value) {
       alert(result.error.message);
     }
   });
+}
+
+FeedView.prototype.showFeedDetails = function(title, link) {
+	$.mobile.changePage("details.html", { transition: "slide", changeHase: false});
+	$(document).ready(function (){
+		feedView.loadFeedContent(title, link);
+	});
+}
+
+FeedView.prototype.loadFeedContent = function(title, linkFeed) {
+	var feed = new google.feeds.Feed(linkFeed);
+	feed.load(function(result) {
+		if (!result.error) {
+			 for (var i = 0; i < result.feed.entries.length; i++) {
+				var entry = result.feed.entries[i];
+				if(entry.title == title){
+					$("#details_page").html(entry.content);
+					$("#feed_title").html(entry.content);
+					break;
+				}
+			}
+		}
+	});
 }
 
 var feedView = new FeedView();

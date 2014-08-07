@@ -86,6 +86,14 @@ FeedView.prototype.getUnreadFeeds = function(url, index) {
 }
 
 FeedView.prototype.findFeedsFromUrl = function(value) {
+  $.mobile.loading("show", {
+        text: "",
+        textVisible: false,
+        theme: "d",
+        textonly: false,
+        html: ""
+  });
+  $("#menu_panel").panel("close");
   var feed = new google.feeds.Feed(value.id);
 
   feed.load(function(result) {
@@ -102,9 +110,9 @@ FeedView.prototype.findFeedsFromUrl = function(value) {
         if (img) {
           imgSrc = img.src;
         }
-		var title = entry.title.replace(/["']/g,"");
+		    var title = entry.title.replace(/["']/g,"");
         var li =
-          '<li data-icon="false" onclick="feedView.showFeedDetails(\''+ title +'\', \''+ value.id +'\')" id="'+ entry.link +'">' +
+          '<li class="feed_item" data-icon="false" onclick="feedView.showFeedDetails(\''+ title +'\', \''+ value.id +'\')" id="'+ entry.link +'">' +
           '  <a style="display:inline-block" data-transition="slide">' +
           '    <img class="feed_image" src="' + imgSrc + '"/>' +
           '    <p><strong>' + title + '</strong></p>' +
@@ -116,8 +124,9 @@ FeedView.prototype.findFeedsFromUrl = function(value) {
       $("#list_unred_feeds").html(html);
       $("#list_unred_feeds").listview('refresh');
     } else {
-      alert(result.error.message);
+      //alert(result.error.message);
     }
+    $.mobile.loading( "hide" );
   });
 }
 

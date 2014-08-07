@@ -25,6 +25,15 @@
 	height: 32px;
 }
 
+#list_unred_feeds li {
+	height: 118px;
+}
+
+#no_feeds_text {
+	text-align: center;
+	vertical-align: middle;
+}
+
 .feed_image {
 	margin-left: 12px;
 	margin-top: 18px;

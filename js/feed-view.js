@@ -132,13 +132,14 @@ FeedView.prototype.findFeedsFromUrl = function(value) {
 
 FeedView.prototype.showFeedDetails = function(title, link) {
 	$.mobile.changePage("details.html", { transition: "slide", changeHase: false});
-	$(document).ready(function (){
+	$(document).ready(function () {
 		feedView.loadFeedContent(title, link);
 	});
 }
 
 FeedView.prototype.loadFeedContent = function(title, linkFeed) {
 	var feed = new google.feeds.Feed(linkFeed);
+
 	feed.load(function(result) {
 		if (!result.error) {
 			 for (var i = 0; i < result.feed.entries.length; i++) {
@@ -146,6 +147,8 @@ FeedView.prototype.loadFeedContent = function(title, linkFeed) {
 				if(entry.title == title){
 					$("#details_page").html(entry.content);
 					$("#feed_title").html(entry.title);
+
+          $("#details_page").find('img').addClass('details_image');
 					break;
 				}
 			}

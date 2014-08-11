@@ -1,7 +1,35 @@
 
+@font-face {
+	font-family: 'Oxygen';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Oxygen'), local('Oxygen-Regular'), url('../font/oxygen.woff') format('woff');
+}
+
+#feed_title {
+	font-family: 'Oxygen', sans-serif;
+	margin: 30px;
+	line-height: 28px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	text-justify: inter-word;
+}
+
 #details_page {
-	margin: 1.5em;
-	width: 90%;
+	font-family: 'Oxygen', sans-serif;
+	margin: 30px;
+	line-height: 28px;
+	font-size: 16px;
+	width: 85%;
+	font-weight: normal;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+.details_image {
+	max-height: 320px;
+	max-width: 320px;
 }
 
 #app_content p {
@@ -50,6 +78,31 @@
 	margin-bottom: 100px;
 }
 
+.ui-btn-up-c {
+	background: white;
+	border: 0px;
+}
+
 .ui-body-c {
+	background: white;
+	background-image: none;
+}
+
+.ui-overlay-c {
+	background: white;
+	background-image: none;
+}
+
+.ui-bar-a {
+	text-shadow: 0 /*{a-bar-shadow-x}*/ 0px /*{a-bar-shadow-y}*/ 0 /*{a-bar-shadow-radius}*/ #FFF /*{a-bar-shadow-color}*/;
+	//border: 1px solid #4E71FC /*{a-bar-border}*/;
+	//background-image: linear-gradient( #24A2DD /*{a-bar-background-start}*/, #24A2DD /*{a-bar-background-end}*/);
+	border: 1px solid #000000 /*{a-bar-border}*/;
+	background-image: linear-gradient( #000000 /*{a-bar-background-start}*/, #000000 /*{a-bar-background-end}*/);
+}
+
+.ui-btn-up-a {
+	border: 0px;
+	background: none;
 	background-image: none;
 }
